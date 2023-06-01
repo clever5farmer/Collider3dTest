@@ -18,17 +18,20 @@ public class PlayerMovement : MonoBehaviour
 	{
 		moveH = Input.GetAxisRaw("Horizontal") * moveSpeed;// * Time.deltaTime;
 		moveV = Input.GetAxisRaw("Vertical") * moveSpeed;// * Time.deltaTime;
-		movement = new Vector3(moveH, 0f, moveV);
+		movement = new Vector3(moveH, moveV, 0f);
 	}
 
 	private void FixedUpdate()
 	{
-		Vector3 currentPosition = transform.position;
-		currentPosition.y = 0f;
 		rb.velocity = movement;
 		//rb.velocity = new Vector2(moveH, moveV);
 		//rb.MovePosition(currentPosition + movement);
 
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log("111111");
 	}
 
 }
